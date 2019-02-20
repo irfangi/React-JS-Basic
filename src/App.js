@@ -32,10 +32,36 @@ import './App.css';
 //   }
 // }
 
+class Toggle extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      kondisi : true
+    }
+    this.toggleChange = this.toggleChange.bind(this)
+  }
+  toggleChange(){
+    this.setState(state=>({
+      kondisi : !state.kondisi
+    }))
+  }
+  render(){
+    return(
+      <button onClick = {this.toggleChange}>
+        {this.state.kondisi ? 'ON' : 'OFF'}
+        <p>
+          lampu {this.state.kondisi ? 'menyala' : 'mati'}
+        </p>
+      </button>
+    )
+  }
+}
+
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Toggle/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {/* <Timer mulai = "0"/>  timer*/}
